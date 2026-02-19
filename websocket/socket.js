@@ -1,117 +1,115 @@
 import http from "http";
 import { WebSocketServer } from "ws";
 
+// Variables
 const server = http.createServer();
 const wss = new WebSocketServer({ noServer: true });
 
-// Handle WebSocket upgrades
+// Handle WSS Upgrades
 server.on("upgrade", (req, socket, head) => {
-  const path = req.url;
+    const path = requ.url;
 
-  if (path === "/api/execute") {
-    wss.handleUpgrade(req, socket, head, ws => {
-      ws.route = "execute";
-      wss.emit("connection", ws, req);
-    });
-    return;
-  }
+    if (path === "/socket/execute") {
+        wss.handleUpgrade(req, socket, head, ws =>{
+            wss.route = "execute";
+            wss.emit("connection");
+        });
+        return;
+    }
+    
+    if (path === "/socket/inject") {
+        wss.handleUpgrade(req, socket, head, ws => {
+            wss.route = "inject";
+            wss.emit("connection");
+        });
+        return;
+    }
 
-  if (path === "/api/inject") {
-    wss.handleUpgrade(req,socket,head,ws => {
-      ws.route = "inject"
-      wss.emit("connection", ws, req)
-    });
-    return;
-  }
-  if (path === "/api/kill") {
-    wss.handleUpgrade(req, socket, head, ws => {
-      ws.route = "kill";
-      wss.emit("connection", ws, req);
-    });
-    return;
-  }
-  socket.destroy();
+    if(path === "/socket/kill") {
+        wss.handleUpgrade(req, socket, head, ws => {
+            wss.route = "kill";
+            wss.emit("connection");
+        });
+        return;
+    }
 });
 
-// Handle WebSocket connections
 wss.on("connection", (ws, req) => {
-  console.log("Client connected to route:", ws.route);
+    console.log("[CONNECTED] Client is connected to route:", ws.route)
 
-  // /api/execute
-  if (ws.route === "execute") {
-    ws.on("message", msg => {
-      let data;
+    // /socket/execute
+    if (ws.route === "execute") {
+        ws.on("message", msg => {
+            let data;
 
-      try {
-        data = JSON.parse(msg);
-      } catch {
+            try {
+                data = JSON.parse(msg);
+            } catch {
+                ws.send(JSON.stringify({
+                    type: "error",
+                    message: "Invalid JSON"
+                }))
+            }
+        })
+
+        console.log("[EXECUTE]\n" + JSON.stringify(data, null, 2));
+
         ws.send(JSON.stringify({
-          type: "error",
-          message: "Invalid JSON"
+            type: "executeResult",
+            message: "Execution complete",
         }));
-        return;
-      }
+        return
+    };
 
-      console.log("[EXECUTE]\n" + JSON.stringify(data, null, 2));
+    // /socket/inject
+    if (ws.route === "inject") {
+        ws.on("message", msg => {
+            let data;
 
-      ws.send(JSON.stringify({
-        type: "executeResult",
-        message: "Execution complete",
-      }));
-      return;
-    });
-  }
-  // /api/inject
-  if (ws.route === "inject") {
-    ws.on("message", msg => {
-      let data;
+            try {
+                data = JSON.parse(msg);
+            } catch {
+                ws.send(JSON.stringify({
+                    type: "error",
+                    message: "Invalid JSON"
+                }))
+            }
+        })
 
-      try {
-         data = JSON.parse(msg)
-      } catch {
+        console.log("[INJECT]\n" + JSON.stringify(data, null, 2));
+
         ws.send(JSON.stringify({
-          type: "error",
-          message: "invalid JSON"
-        }))
-      }
-
-      console.log("[INJECT]\n" + JSON.stringify(data, null, 2));
-
-      ws.send(JSON.stringify({
-        type: "injectResult",
-        message: "injection successful",
-      }));
-      return;
-    }) 
-  }
-  // /api/kill
-  if (ws.route === "kill") {
-    ws.on("message", msg => {
-      let data;
-
-      try {
-        data = JSON.parse(msg);
-      } catch {
-        ws.send(JSON.stringify({
-          type: "error",
-          message: "Invalid JSON"
+            type: "injectResult",
+            message: "Injection complete",
         }));
-        return;
-      }
+        return
+    }
 
-      console.log("[KILL]\n" + JSON.stringify(data, null, 2));
-      
-      ws.send(JSON.stringify({
-        type: "killResult",
-        output: "Kill complete",
-        received: data
-      }));
-      return;
-    });
-  }
-});
+    // /socket/kill
+    if (ws.route === "kill") {
+        ws.on("message", msg => {
+            let data;
 
-// Start server
+            try {
+                data = JSON.parse(msg);
+            } catch {
+                ws.send(JSON.stringify({
+                    type: "error",
+                    message: "Invalid JSON"
+                }))
+            }
+        })
+
+        console.log("[KILL]\n" + JSON.stringify(data, null, 2));
+
+        ws.send(JSON.stringify({
+            type: "killResult",
+            message: "Kill complete",
+        }));
+        return
+    }
+})
+
 server.listen(8080, () => {
-  console.log("WebSocket server running on port 8080");
-});
+    console.log("[SERVER] Running on 8080")
+})

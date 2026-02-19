@@ -139,6 +139,18 @@ window.addEventListener("load", () => {
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
           },
           {
+            label: "local",
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: "local ${1:name} = ${2:arg}",
+            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
+          },
+          {
+            label: "for",
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: "for ${1:index}, ${2:value} in ${3:method} do\n\t${4:--code}\nend",
+            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
+          },
+          {
             label: "if",
             kind: monaco.languages.CompletionItemKind.Snippet,
             insertText: "if ${1:condition} then\n\t${2:-- code}\nend",
