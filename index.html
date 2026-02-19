@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="website/css/output.css">
 <script src="website/js/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+
 <body class="bg-[#0f0f0f] text-white p-8 font-sans">
-  <div class="min-h-screen bg-[#0d0d0d] text-white font-sans p-8 flex flex-col items-center">
+<div class="min-h-screen bg-[#0d0d0d] text-white font-sans p-8 flex flex-col items-center">
 
   <!-- Header -->
   <div class="text-center mb-10">
@@ -47,35 +48,15 @@
         <span class="text-gray-300 font-medium">tabs</span>
       </div>
 
-      <!-- Editor Area -->
-      <div class="flex-1 flex items-center justify-center text-gray-400">
-        monaco editor here
-      </div>
+      <!-- Monaco Editor -->
+      <div id="editor" class="flex-1 rounded-b-xl bg-[#0f0f0f] border border-[#222]"></div>
     </div>
 
     <!-- Logs Panel -->
-    <div class="bg-[#151515] border border-[#222] rounded-xl shadow-lg w-[280px] h-[330px] p-4 overflow-y-auto flex flex-col gap-4">
-
-      <div class="bg-[#303030] rounded-lg p-3 text-sm">
-        Connected to kill socket successfully
-      </div>
-
-      <div class="bg-[#303030] rounded-lg p-3 text-sm">
-        Failed to connect to kill socket
-      </div>
-
-      <div class="bg-[#303030] rounded-lg p-3 text-sm">
-        Connecting to kill socket...
-      </div>
-
-      <div class="bg-[#303030] rounded-lg p-3 text-sm">
-        Not Connected to socket
-      </div>
-
+    <div id="logs" class="bg-[#151515] border border-[#222] rounded-xl shadow-lg w-[280px] h-[330px] p-4 overflow-y-auto flex flex-col gap-4">
     </div>
 
   </div>
 
 </div>
-
 </body>
