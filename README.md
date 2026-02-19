@@ -8,7 +8,10 @@ how does it work
 -> it uses websockets to send and revcieve from the client (aka ur executor) and then u can execute code from the website to ur executor which will then execute it. the inject button is gonna have to be rebanrded
 # to do
 -DONE- move to tailwindcss@3 (took forever)
+
 -IN PROGRESS- remake the gui to be cleaner
+
 -FUTURE- make the client side (executor) work
+
 # future
 idk
