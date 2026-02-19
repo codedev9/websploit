@@ -151,6 +151,12 @@ window.addEventListener("load", () => {
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
           },
           {
+            label: "while",
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: "while ${1:condition} do\n\tend",
+            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
+          },
+          {
             label: "if",
             kind: monaco.languages.CompletionItemKind.Snippet,
             insertText: "if ${1:condition} then\n\t${2:-- code}\nend",
@@ -168,7 +174,7 @@ window.addEventListener("load", () => {
     });
 
     editor = monaco.editor.create(document.getElementById("editor"), {
-      value: "print('websitexploit')",
+      value: 'print("websitexploit.vercel.app")',
       language: "lua",
       theme: "roblox-dark",
       automaticLayout: true,
@@ -201,7 +207,7 @@ window.addEventListener("load", () => {
 // LOGGING + UI
 // -------------------------
 function log(msg) {
-  const logBox = document.getElementById("log");
+  const logBox = document.getElementById("logs");
   if (!logBox) return;
 
   const p = document.createElement("p");
@@ -242,6 +248,34 @@ function disconnectAll() {
   updateStatus();
   log("[INFO] Disconnected manually");
 }
+
+// -------------------------
+// BUTTON LISTENERS
+// -------------------------
+
+document.getElementById("connectBtn").addEventListener("click", () => {
+  connectAll();
+});
+
+document.getElementById("disconnectBtn").addEventListener("click", () => {
+  disconnectAll(); // if you have one
+});
+
+document.getElementById("executeBtn").addEventListener("click", () => {
+  const code = editor.getValue(); // Monaco editor content
+  sockets.execute?.send(JSON.stringify({ script: code, timestamp: Date.now() }));
+});
+
+document.getElementById("injectBtn").addEventListener("click", () => {
+  const code = editor.getValue();
+  sockets.inject?.send(JSON.stringify({type: "inject"}));
+});
+
+document.getElementById("killBtn").addEventListener("click", () => {
+  sockets.kill?.send(JSON.stringify({ kill: true }));
+});
+
+
 
 // -------------------------
 // WEBSOCKET CONNECTIONS
