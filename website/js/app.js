@@ -281,7 +281,7 @@ document.getElementById("killBtn").addEventListener("click", () => {
 // WEBSOCKET CONNECTIONS
 // -------------------------
 function connectRoute(name, route) {
-  const port = document.getElementById("ws-port").value.trim();
+  const port = document.getElementById("portInput").value.trim();
   if (!port) return log("[ERR] No port entered");
 
   states[name] = "connecting";
