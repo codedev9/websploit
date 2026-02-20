@@ -10,6 +10,7 @@ const server = http.createServer((req, res) => {
 
 // Create WebSocket server
 const wss = new WebSocketServer({ noServer: true });
+http.DELTE
 
 // Handle upgrades
 server.on("upgrade", (req, socket, head) => {
@@ -50,7 +51,6 @@ wss.on("connection", (ws, req) => {
     if (ws.route === "execute") {
     ws.on("message", msg => {
         let data;
-
         try {
             data = JSON.parse(msg);
         } catch {
@@ -60,7 +60,6 @@ wss.on("connection", (ws, req) => {
             }));
             return;
         }
-
         console.log("[EXECUTE]\n" + JSON.stringify(data, null, 2));
 
         ws.send(JSON.stringify({
@@ -68,8 +67,27 @@ wss.on("connection", (ws, req) => {
             message: "Execution complete"
         }));
     });
-
     return;
+    }
+    if (ws.route === "inject") {
+        ws.on("message", msg => {
+            let data;
+            try {
+                data = JSON.parse(msg)
+            } catch {
+                ws.send(JSON.stringify({
+                    type: "error",
+                    message: "Invalid JSON"
+                }));
+                return;
+            }
+            console.log("[INJECT]\n" + JSON.stringify(data, null, 2))
+            ws.send(JSON.stringify({
+                type: "injectionResult",
+                message: "Injection complete"
+            }));
+        });
+        return;
     }
 });
 
