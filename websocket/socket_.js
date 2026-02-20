@@ -89,6 +89,26 @@ wss.on("connection", (ws, req) => {
         });
         return;
     }
+    if (ws.route === "kill") {
+        ws.on("message", msg => {
+            let data;
+            try {
+                data = JSON.parse(msg)
+            } catch {
+                ws.send(JSON.stringify({
+                    type: "error",
+                    message: "Invalid JSON"
+                }))
+                return;
+            }
+            console.log("[KILL]\n" + JSON.stringify(data, null, 2))
+            ws.send(JSON.stringify({
+                type: "killResult",
+                message: "Kill complete"
+            }));
+        });
+        return
+    }
 });
 
 // Railway port fix
