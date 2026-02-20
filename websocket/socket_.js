@@ -48,25 +48,28 @@ wss.on("connection", (ws, req) => {
 
     // /socket/execute
     if (ws.route === "execute") {
-        ws.on("message", msg => {
-          let data;
+    ws.on("message", msg => {
+        let data;
 
-          try {
-            data = JSON.parse(msg)
-          } catch {
+        try {
+            data = JSON.parse(msg);
+        } catch {
             ws.send(JSON.stringify({
-              type: "error",
-              message: "Invalid JSON"
-            }))
+                type: "error",
+                message: "Invalid JSON"
+            }));
             return;
-          }
-        })
+        }
+
         console.log("[EXECUTE]\n" + JSON.stringify(data, null, 2));
+
         ws.send(JSON.stringify({
-          type: "executeResult",
-          message: "Execution complete",
-        }))
-        return;
+            type: "executeResult",
+            message: "Execution complete"
+        }));
+    });
+
+    return;
     }
 });
 
