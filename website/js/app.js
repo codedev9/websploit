@@ -218,7 +218,7 @@ function log(msg) {
 }
 
 function setStatus(text, color) {
-  const label = document.getElementById("statustext");
+  const label = document.getElementById("statusText");
   label.textContent = text;
 }
 
