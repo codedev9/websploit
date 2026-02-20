@@ -36,3 +36,7 @@ server.on("upgrade", (req, socket, head) => {
 wss.on("connection", (ws, req) => {
     console.log("[CONNECTED] Client connected to server with route:", ws.route);
 })
+
+server.listen(8080, () => {
+    console.log("[STARTED] WebSocket server started on port 8080");
+})
