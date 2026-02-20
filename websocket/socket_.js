@@ -11,22 +11,23 @@ server.on("upgrade", (req, socket, head) => {
     const path = req.url
 
     if (path === "/socket/execute") {
-        wss.handleUpgrade(req, socket, head, wss => {
-            wss.route = "execute";
-            wss.emit("connection");
+        wss.handleUpgrade(req, socket, head, ws => {
+           ws.route = "execute";
+           wss.emit("connection", ws, req);
         });
+
         return;
     }
     if (path === "/socket/inject") {
         wss.handleUpgrade(req, socket, head, wss => {
-            wss.route = "inject";
+            ws.route = "inject";
             wss.emit("connection");
         });
         return;
     }
     if (path === "/socket/kill") {
         wss.handleUpgrade(req, socket, head, wss => {
-            wss.route = "kill";
+            ws.route = "kill";
             wss.emit("connection");
         });
         return;
