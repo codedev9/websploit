@@ -654,6 +654,37 @@ video {
   border-radius: 0.75rem;
 }
 
+.border {
+  border-width: 1px;
+}
+
+.border-\[\#1a1a1a\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(26 26 26 / var(--tw-border-opacity, 1));
+}
+
+.border-\[\#2a2a2a\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(42 42 42 / var(--tw-border-opacity, 1));
+}
+
+.border-\[\#4a4a4a\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(74 74 74 / var(--tw-border-opacity, 1));
+}
+
+.border-blue-400\/40 {
+  border-color: rgb(96 165 250 / 0.4);
+}
+
+.border-orange-400\/40 {
+  border-color: rgb(251 146 60 / 0.4);
+}
+
+.border-red-400\/40 {
+  border-color: rgb(248 113 113 / 0.4);
+}
+
 .bg-\[\#0c0c0c\] {
   --tw-bg-opacity: 1;
   background-color: rgb(12 12 12 / var(--tw-bg-opacity, 1));
@@ -787,6 +818,11 @@ video {
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition {

@@ -6,18 +6,18 @@
 
   <!-- HEADER -->
   <header class="text-center mt-6">
-    <h1 class="text-5xl font-bold">websitexploit</h1>
+    <h1 class="text-5xl font-bold drop-shadow">websitexploit</h1>
     <p class="text-white/50 text-xl mt-2">a websocket executor</p>
   </header>
 
   <!-- CONNECTION BOX -->
   <section class="flex justify-center mt-10">
-    <div class="bg-[#151515] rounded-xl w-[574px] p-6 shadow-lg">
+    <div class="bg-[#151515] rounded-xl w-[574px] p-6 border border-[#2a2a2a] shadow-lg">
       <h2 class="text-3xl font-semibold mb-2">Connection</h2>
       <p class="text-white/60 text-lg mb-6">please type in code here</p>
 
       <div class="flex items-center justify-center gap-3 mb-6">
-        <div class="bg-[#303030] rounded-lg px-4 py-2">
+        <div class="bg-[#303030] rounded-lg px-4 py-2 border border-[#4a4a4a]">
           <input 
             type="text" 
             placeholder="ABC123"
@@ -25,7 +25,7 @@
           />
         </div>
 
-        <button class="bg-blue-600 hover:bg-blue-700 transition text-white rounded-lg px-6 py-2 text-lg">
+        <button class="bg-blue-600 hover:bg-blue-700 transition text-white rounded-lg px-6 py-2 text-lg border border-blue-400/40">
           Submit
         </button>
       </div>
@@ -38,14 +38,14 @@
 
   <!-- MAIN EDITOR AREA -->
   <section class="flex justify-center mt-14">
-    <div class="bg-[#0c0c0c] rounded-xl w-[1211px] p-6 flex gap-4">
+    <div class="bg-[#0c0c0c] rounded-xl w-[1211px] p-6 flex gap-4 border border-[#1a1a1a]">
 
-     <!-- LEFT: EDITOR -->
-     <div id="editor" class="bg-[#151515] rounded-xl flex-1 h-[330px]"></div>
+      <!-- LEFT: EDITOR -->
+      <div id="editor" class="bg-[#151515] rounded-xl flex-1 h-[330px] border border-[#2a2a2a]"></div>
 
       <!-- RIGHT: STATUS PANEL -->
-      <div class="bg-[#151515] rounded-xl w-[287px] h-[330px] p-4">
-        <div class="bg-[#303030] rounded-xl p-4">
+      <div class="bg-[#151515] rounded-xl w-[287px] h-[330px] p-4 border border-[#2a2a2a]">
+        <div class="bg-[#303030] rounded-xl p-4 border border-[#4a4a4a]">
           <p class="text-white text-lg text-center">
             Connected to kill socket successfully
           </p>
@@ -57,17 +57,17 @@
 
   <!-- BOTTOM ACTION BAR -->
   <footer class="flex justify-center mt-10 mb-10">
-    <div class="bg-[#0c0c0c] rounded-xl w-[296px] h-[56px] flex items-center justify-between px-4">
+    <div class="bg-[#0c0c0c] rounded-xl w-[296px] h-[56px] flex items-center justify-between px-4 border border-[#1a1a1a]">
 
-      <button id="executeBtn" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-6 py-2 text-lg">
+      <button id="executeBtn" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-6 py-2 text-lg border border-blue-400/40">
         Execute
       </button>
 
-      <button id="injectBtn" class="bg-orange-600 hover:bg-orange-700 text-white rounded-lg px-6 py-2 text-lg">
+      <button id="injectBtn" class="bg-orange-600 hover:bg-orange-700 text-white rounded-lg px-6 py-2 text-lg border border-orange-400/40">
         Inject
       </button>
 
-      <button id="killBtn" class="bg-red-600 hover:bg-red-700 text-white rounded-lg px-4 py-2 text-lg">
+      <button id="killBtn" class="bg-red-600 hover:bg-red-700 text-white rounded-lg px-4 py-2 text-lg border border-red-400/40">
         Kill
       </button>
 
