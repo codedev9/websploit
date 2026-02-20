@@ -7,28 +7,28 @@ const wss = new WebSocketServer({ noServer: true });
 
 // Handle WSS Upgrades
 server.on("upgrade", (req, socket, head) => {
-    const path = requ.url;
+    const path = req.url;
 
     if (path === "/socket/execute") {
         wss.handleUpgrade(req, socket, head, ws =>{
-            wss.route = "execute";
-            wss.emit("connection");
+            ws.route = "execute";
+            ws.emit("connection");
         });
         return;
     }
     
     if (path === "/socket/inject") {
         wss.handleUpgrade(req, socket, head, ws => {
-            wss.route = "inject";
-            wss.emit("connection");
+            ws.route = "inject";
+            ws.emit("connection");
         });
         return;
     }
 
     if(path === "/socket/kill") {
         wss.handleUpgrade(req, socket, head, ws => {
-            wss.route = "kill";
-            wss.emit("connection");
+            ws.route = "kill";
+            ws.emit("connection");
         });
         return;
     }

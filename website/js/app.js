@@ -243,6 +243,9 @@ function disconnectAll() {
 
 document.getElementById("connectBtn").addEventListener("click", () => {
   connectAll();
+  Object.values(sockets).forEach(ws => {
+    console.log("WebSocket state:", ws.readyState);
+  });
 });
 
 document.getElementById("disconnectBtn").addEventListener("click", () => {
@@ -358,7 +361,7 @@ function connectRoute(name, route) {
 }
 
 function connectAll() {
-  connectRoute("execute", "/api/execute");
-  connectRoute("kill", "/api/kill");
-  connectRoute("inject", "/api/inject");
+  connectRoute("execute", "/socket/execute");
+  connectRoute("kill", "/socket/kill");
+  connectRoute("inject", "/socket/inject");
 }
