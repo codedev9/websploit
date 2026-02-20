@@ -33,6 +33,6 @@ server.on("upgrade", (req, socket, head) => {
     }
 })
 
-ws.on("connection", (ws, req) => {
+wss.on("connection", (ws, req) => {
     console.log("[CONNECTED] Client connected to server with route:", ws.route);
 })
