@@ -218,20 +218,8 @@ function log(msg) {
 }
 
 function setStatus(text, color) {
-  const dot = document.getElementById("status-dot");
-  const label = document.getElementById("status-text");
-
+  const label = document.getElementById("statustext");
   label.textContent = text;
-
-  let base = "w-4 h-4 rounded-full shadow-lg ";
-
-  if (color === "green") {
-    dot.className = base + "bg-green-600 animate-pulse";
-  } else if (color === "yellow") {
-    dot.className = base + "bg-yellow-500 animate-pulse";
-  } else {
-    dot.className = base + "bg-red-600 animate-pulse";
-  }
 }
 
 function disconnectAll() {
