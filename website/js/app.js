@@ -151,9 +151,15 @@ window.addEventListener("load", () => {
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
           },
           {
+            label: "repeat",
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: "repeat\n\t${1:-- code}\nuntil ${2:condition}",
+            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
+          },
+          {
             label: "while",
             kind: monaco.languages.CompletionItemKind.Snippet,
-            insertText: "while ${1:condition} do\n\tend",
+            insertText: "while ${1:condition} do\n\t${2:-- code}\nend",
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
           },
           {
