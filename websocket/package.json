@@ -3,7 +3,4 @@
     "ws": "^8.19.0"
   },
   "type": "module",
-  "scripts": {
-     "start": "node websocket/socket.js"
-  }
 }
