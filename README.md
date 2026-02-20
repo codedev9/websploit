@@ -9,7 +9,9 @@ how does it work
 # to do
 -DONE- move to tailwindcss@3 (took forever)
 
--IN PROGRESS- remake the gui to be cleaner
+-DONE- remake the gui to be cleaner
+
+-IN PROGRESS- recode some parts of the socket and client so that i can move to a new one time code systemn
 
 -FUTURE- make the client side (executor) work
 
