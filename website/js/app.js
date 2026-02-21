@@ -10,6 +10,13 @@ let states = {
   inject: "closed",
 };
 
+let one_time_codes = {
+  USER_: {
+    code: "NSH892",
+    ws: 1,
+  }
+}
+
 // -------------------------
 // EXECUTE SCRIPT
 // -------------------------
@@ -68,16 +75,16 @@ function updateStatus() {
   const values = Object.values(states);
 
   if (values.every(s => s === "open")) {
-    setStatus("Connected", "green");
+    setStatus("Status: Connected", "green");
     return;
   }
 
   if (values.some(s => s === "connecting")) {
-    setStatus("Connecting...", "yellow");
+    setStatus("Status: Connecting...", "yellow");
     return;
   }
 
-  setStatus("Disconnected", "red");
+  setStatus("Status: Disconnected", "red");
 }
 
 // -------------------------
@@ -278,31 +285,31 @@ document.getElementById("killBtn").addEventListener("click", () => {
 // WEBSOCKET CONNECTIONS
 // -------------------------
 function connectRoute(name, route) {
-  const port = document.getElementById("portInput").value.trim();
-  if (!port) return log("[ERR] No port entered");
+  const code = document.getElementById("codeInput").value.trim();
+  if (!code) return log("[ERROR] No code found, please enter a code.");
 
   states[name] = "connecting";
   updateStatus();
 
-  const ws = new WebSocket(`ws://localhost:${port}${route}`);
+  const ws = new WebSocket(`wss://websitexploit.up.railway.app${route}?code${code}`);
   sockets[name] = ws;
 
   ws.onopen = () => {
     states[name] = "open";
     updateStatus();
-    log(`[OK] Connected (${name})`);
+    log(`[CONNECTION] Connected (${name})`);
   };
 
   ws.onerror = () => {
     states[name] = "closed";
     updateStatus();
-    log(`[ERR] Error (${name})`);
+    log(`[ERROR] Error (${name})`);
   };
 
   ws.onclose = () => {
     states[name] = "closed";
     updateStatus();
-    log(`[INFO] Disconnected (${name})`);
+    log(`[LOG] Disconnected (${name})`);
   };
 
   // ⭐ Inject-specific handler

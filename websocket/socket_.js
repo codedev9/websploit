@@ -15,7 +15,6 @@ http.DELTE
 // Handle upgrades
 server.on("upgrade", (req, socket, head) => {
     const path = req.url;
-
     if (path === "/socket/execute") {
         wss.handleUpgrade(req, socket, head, ws => {
             ws.route = "execute";
@@ -23,7 +22,6 @@ server.on("upgrade", (req, socket, head) => {
         });
         return;
     }
-
     if (path === "/socket/inject") {
         wss.handleUpgrade(req, socket, head, ws => {
             ws.route = "inject";
@@ -31,7 +29,6 @@ server.on("upgrade", (req, socket, head) => {
         });
         return;
     }
-
     if (path === "/socket/kill") {
         wss.handleUpgrade(req, socket, head, ws => {
             ws.route = "kill";
@@ -39,7 +36,6 @@ server.on("upgrade", (req, socket, head) => {
         });
         return;
     }
-
     socket.destroy();
 });
 
