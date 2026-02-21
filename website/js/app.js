@@ -256,9 +256,6 @@ function disconnectAll() {
 
 document.getElementById("submitBtn").addEventListener("click", () => {
   connectAll();
-  Object.values(sockets).forEach(ws => {
-    console.log("WebSocket state:", ws.readyState);
-  });
 });
 
 document.getElementById("disconnectBtn").addEventListener("click", () => {
