@@ -288,7 +288,7 @@ function connectRoute(name, route) {
   states[name] = "connecting";
   updateStatus();
 
-  const ws = new WebSocket(`wss://websitexploit.up.railway.app${route}?code=${code}`);
+  const ws = new WebSocket(`wss://api.websitexploit.com${route}?code=${code}`);
   sockets[name] = ws;
 
   ws.onopen = () => {
