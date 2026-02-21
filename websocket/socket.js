@@ -17,7 +17,7 @@ const wss = new WebSocketServer({ noServer: true });
 
 // Handle upgrades
 server.on("upgrade", (req, socket, head) => {
-    const path = req.url;
+    const path = req.url.split("?")[0]
     if (path === "/socket/execute") {
         wss.handleUpgrade(req, socket, head, ws => {
             ws.route = "execute";
