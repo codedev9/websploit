@@ -110,6 +110,6 @@ wss.on("connection", (ws, req) => {
     }
 })
 
-server.listen(8080, () => {
+server.listen(process.env.PORT, () => {
     console.log("[SERVER] Running on 8080")
 })
