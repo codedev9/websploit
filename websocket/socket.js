@@ -114,6 +114,6 @@ wss.on("connection", (ws, req) => {
 // Railway port fix
 const PORT = process.env.PORT || 8080;
 
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
     console.log("[STARTED] WebSocket server running on port", PORT);
 });
