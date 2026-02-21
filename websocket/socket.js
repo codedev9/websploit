@@ -10,7 +10,6 @@ const server = http.createServer((req, res) => {
 
 // Create WebSocket server
 const wss = new WebSocketServer({ noServer: true });
-http.DELTE
 
 // Handle upgrades
 server.on("upgrade", (req, socket, head) => {
