@@ -3,6 +3,6 @@
     "tailwindcss": "^3.4.19"
   },
   "scripts": {
-     "start": "node websocket/socket_.js"
+     "start": "node websocket/socket.js"
   }
 }
