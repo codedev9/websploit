@@ -1,3 +1,6 @@
+process.on("uncaughtException", err => {
+    console.error("UNCAUGHT ERROR:", err);
+});
 import http from "http";
 import crypto from "crypto";
 import { WebSocketServer } from "ws";
