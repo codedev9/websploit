@@ -2,8 +2,12 @@ import http from "http";
 import { WebSocketServer } from "ws";
 
 // Variables
-const server = http.createServer();
+const server = http.createServer((req, res) => { 
+    res.writeHead(200); res.end("WebSocket server is running"); 
+});
 const wss = new WebSocketServer({ noServer: true });
+
+
 
 // Handle WSS Upgrades
 server.on("upgrade", (req, socket, head) => {
