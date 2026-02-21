@@ -254,7 +254,7 @@ function disconnectAll() {
 // BUTTON LISTENERS
 // -------------------------
 
-document.getElementById("connectBtn").addEventListener("click", () => {
+document.getElementById("submitBtn").addEventListener("click", () => {
   connectAll();
   Object.values(sockets).forEach(ws => {
     console.log("WebSocket state:", ws.readyState);
