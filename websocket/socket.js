@@ -1,9 +1,9 @@
 process.on("uncaughtException", err => {
     console.error("UNCAUGHT ERROR:", err);
 });
-import http from "http";
-import crypto from "crypto";
-import { WebSocketServer } from "ws";
+const http = require("http");
+const crypto = require("crypto");
+const { WebSocketServer } = require("ws");
 
 // Create HTTP server (Railway needs this)
 const server = http.createServer((req, res) => { 
