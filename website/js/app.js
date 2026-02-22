@@ -187,7 +187,7 @@ window.addEventListener("load", () => {
     });
 
     editor = monaco.editor.create(document.getElementById("editor"), {
-      value: 'print("websitexploit.vercel.app")',
+      value: 'print("websploit.xyz")',
       language: "lua",
       theme: "roblox-dark",
       automaticLayout: true,
