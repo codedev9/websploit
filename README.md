@@ -1,4 +1,4 @@
-# websitexploit
+# websploit
 a side project by me, uses websockets to help u win games
 # faq
 how to install
