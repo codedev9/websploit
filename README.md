@@ -5,9 +5,13 @@ how to install
 -> once i fully code everything and make the gui and stuff it will be avaiable
 
 how does it work
--> it uses websockets to send and revcieve from the client (aka ur executor) and then u can execute code from the website to ur executor which will then execute it. the inject button is gonna have to be rebranded
+it uses websockets to send and revcieve from the client (aka ur executor) and then u can execute code from the website to ur executor which will then execute it. the inject button is gonna have to be rebranded
 # to do
--IN PROGRESS- recode some parts of the socket and client so that i can move to a new one time code systemn\n
--FUTURE- make the client side (executor) work\n
+NOW 
+- recode some parts of the socket and client so that i can move to a new one time code system (IN PROGRESS)
+- find a new platform to host my server
+FUTURE
+- make the client side (executor) work
+
 # future
 idk
