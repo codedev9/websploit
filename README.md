@@ -10,6 +10,7 @@ it uses websockets to send and revcieve from the client (aka ur executor) and th
 NOW 
 - recode some parts of the socket and client so that i can move to a new one time code system (IN PROGRESS)
 - find a new platform to host my server
+
 FUTURE
 - make the client side (executor) work
 
